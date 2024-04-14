@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 //43:00
 public class Epic extends Task {
 
@@ -11,6 +10,10 @@ public class Epic extends Task {
         super(title, description, status);
     }
 
+    public Epic(String title, String description) {
+        super(title, description, Status.NEW);
+    }
+
     public ArrayList<SubTask> getSubTasks() {
         return subTasks;
     }
@@ -18,4 +21,17 @@ public class Epic extends Task {
     public void setSubTasks(ArrayList<SubTask> subTasks) {
         this.subTasks = subTasks;
     }
+
+    public void addSubTask(SubTask subTask) {
+        subTasks.add(subTask);
+    }
+
+    public void removeSubTask(SubTask subTask) {
+        subTasks.remove(subTask);
+    }
+
+    public void updateStatus(Epic epic, Status newStatus) {
+         epic.setStatus(newStatus);
+    }
+
 }
