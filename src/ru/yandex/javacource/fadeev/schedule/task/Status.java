@@ -1,4 +1,4 @@
-package model;
+package ru.yandex.javacource.fadeev.schedule.task;
 
 public enum Status {
     NEW,
