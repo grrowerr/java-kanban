@@ -1,8 +1,7 @@
-package model;
+package ru.yandex.javacource.fadeev.schedule.task;
 
 import java.util.Objects;
 
-//1:33:08
 public class Task {
     private String title;
     private String description;
