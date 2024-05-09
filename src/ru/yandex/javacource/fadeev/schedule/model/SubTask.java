@@ -1,4 +1,4 @@
-package ru.yandex.javacource.fadeev.schedule.task;
+package ru.yandex.javacource.fadeev.schedule.model;
 public class SubTask extends Task {
 
     private int epicId;
@@ -17,11 +17,14 @@ public class SubTask extends Task {
         this.epicId = epicId;
     }
 
-    public int getEpicId() {
+    public Integer getEpicId() {
         return epicId;
     }
 
     public void setEpicId(int epicId) {
+        if (this.getId() == epicId){
+            return;
+        }
         this.epicId = epicId;
     }
 }

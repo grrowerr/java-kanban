@@ -1,4 +1,4 @@
-package ru.yandex.javacource.fadeev.schedule.task;
+package ru.yandex.javacource.fadeev.schedule.model;
 
 import java.util.ArrayList;
 public class Epic extends Task {
@@ -22,6 +22,9 @@ public class Epic extends Task {
     }
 
     public void addSubTaskId(int subTaskId) {
+        if (this.getId() == subTaskId) {
+            return;
+        }
         subTasksIds.add(subTaskId);
     }
 
