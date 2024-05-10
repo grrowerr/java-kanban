@@ -1,3 +1,10 @@
+/*
+* В 14, 15, 16 строках поменял тип переменных для хранения тасок с HashMap на Map
+*
+* За совет по поводу метода updateEpic отдельное спасибо!!!
+* Я вообще не понимаю, как сам не увидел этой проблемы
+*/
+
 package ru.yandex.javacource.fadeev.schedule.service;
 
 import ru.yandex.javacource.fadeev.schedule.model.Epic;
@@ -8,13 +15,13 @@ import ru.yandex.javacource.fadeev.schedule.model.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
-    private HashMap<Integer, Task> tasks;
-    private HashMap<Integer, Epic> epics;
-    private HashMap<Integer, SubTask> subTasks;
+    private Map<Integer, Task> tasks;
+    private Map<Integer, Epic> epics;
+    private Map<Integer, SubTask> subTasks;
     private int uniId = 0;
-
     private final HistoryManager historyManager;
 
     public InMemoryTaskManager(HistoryManager historyManager) {
@@ -122,13 +129,13 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void updateEpic(Epic epic) {
-        Epic saved = epics.get(epic.getId());
-        if (saved == null) {
+        final Epic savedEpic = epics.get(epic.getId());
+        if (savedEpic == null) {
             return;
         }
-        saved.setTitle(epic.getTitle());
-        saved.setDescription(epic.getDescription());
-        epics.put(epic.getId(), saved);
+        epic.setSubTasksIds(savedEpic.getSubTasksIds());
+        epic.setStatus(savedEpic.getStatus());
+        epics.put(epic.getId(), epic);
     }
 
     @Override
